@@ -1,4 +1,5 @@
 "use strict";
+
 //Actual Date
 const numberDate = document.getElementById("numberDate");
 const monthDate = document.getElementById("monthDate");
