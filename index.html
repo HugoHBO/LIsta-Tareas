@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="Description"
+      content="Primer proyecto HAB sobre crear una lista de tareas"
+    />
+    <meta
+      name="Author"
+      content="Carlos J. Zuazo, Daniel Mejía Cano y Hugo HBO"
+    />
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Proyecto_Lista_Tareas</title>
+  </head>
+  <body>
+    <header><h1>TU BLOC DE NOTAS</h1></header>
+    <main>
+      <section id="currentDate">
+        <aside class="numberDate"></aside>
+        <aside class="monthDate"></aside>
+        <aside class="yearDate"></aside>
+        <aside class="weekDate"></aside>
+      </section>
+      <section id="toAddTask">
+        <form name="taskForm">
+          <p>
+            <label for="newTask">Nueva tarea:
+              <input
+                type="text"
+                name="setNewTask" id="newTask"
+                maxlength="100"
+                placeholder="Escribe una nueva tarea"
+                autofocus autocomplete="off"
+            /></label>
+          </p>
+          <p>
+            <label for="importance">Tipo de tarea: </label>
+            <select name="relevance" id="importance" required>
+              <option value="1">Normal</option>
+              <option value="2">Importante</option>
+            </select>
+          </p>
+         <!-- <p>
+            <label
+              ><input type="checkbox" name="done" />Finalizado con éxito</label
+            >
+          </p> -->
+          <p><button id="submitTask">Agregar tarea</button></p>
+        </form>
+      <section id="myTaskList">
+      <ul id="userList">Mi lista de tareas
+      </ul>
+      </section>
+    </main>
+  </body>
+</html>
