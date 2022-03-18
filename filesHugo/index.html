@@ -12,49 +12,78 @@
       name="Author"
       content="Carlos J. Zuazo, Daniel Mejía Cano y Hugo Barros Olano"
     />
-    <script src="main.js" defer></script>
-    <link rel="stylesheet" href="styles.css" />
     <title>Proyecto_Lista_Tareas</title>
+    <!-- links, scripts y fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/js/main.js" defer></script>
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
+
   <body>
-    <header><h1>TU BLOC DE NOTAS</h1></header>
-    <main>
-      <section id="currentDate">
-        <aside id="numberDate"></aside>
-        <aside id="monthDate"></aside>
-        <aside id="yearDate"></aside>
-        <aside id="weekDate"></aside>
-      </section>
-      <section id="toAddTask">
-        <form name="taskForm">
-          <p>
-            <label for="newTask">Nueva tarea:
-              <input
-                type="text"
-                name="NewTask" id="newTask"
-                maxlength="100"
-                placeholder="Escribe una nueva tarea"
-                autofocus autocomplete="off"
-            /></label>
-          </p>
-          <p>
-            <label for="importance">Tipo de tarea: </label>
-            <select name="relevance" id="importance" required>
-              <option value="0">Normal</option>
-              <option value="1">Importante</option>
-            </select>
-          </p>
-         <!-- <p>
-            <label
-              ><input type="checkbox" name="done" />Finalizado con éxito</label
-            >
-          </p> -->
-          <p><button id="submitTask">Agregar tarea</button></p>
-        </form>
-      <section id="myTaskList">
-      <ul id="userList">Mi lista de tareas
-      </ul>
-      </section>
-    </main>
+    <!-- Covertura de la página -->
+    <section class="list roundBorder">
+      <header>
+        <!-- Nombre de la página -->
+        <h1>BLOC DE NOTAS</h1>
+
+        <!-- Fechas del header -->
+        <section class="date">
+          <section class="leftDate">
+            <section id="numberDate"></section>
+            <section>
+              <aside id="monthDate"></aside>
+              <aside id="yearDate"></aside>
+            </section>
+          </section>
+          <div id="textDate"></div>
+        </section>
+      </header>
+      <main>
+        <!-- Form, select y button -->
+        <section id="toAddTask">
+          <form name="taskForm">
+            <p>
+              <label for="newTask">
+                <input
+                  type="text"
+                  name="NewTask"
+                  id="newTask"
+                  maxlength="100"
+                  placeholder="Escribe una nueva tarea"
+                  autofocus
+                  autocomplete="off"
+                  class="roundBorder"
+                />
+              </label>
+            </p>
+            <p>
+              <label for="importance">Tipo de tarea: </label>
+              <select
+                name="relevance"
+                id="importance"
+                class="roundBorder"
+                required
+              >
+                <option value="0">Normal</option>
+                <option value="1">Importante</option>
+              </select>
+            </p>
+            <p>
+              <button id="submitTask" class="roundBorder">Agregar tarea</button>
+            </p>
+          </form>
+        </section>
+
+        <!-- Lista de tareas -->
+        <section id="myTaskList">
+          <ul id="userList">
+            Mi lista de tareas
+          </ul>
+        </section>
+      </main>
+    </section>
   </body>
 </html>

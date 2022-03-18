@@ -1,19 +1,17 @@
 "use strict";
 
-//Actual Date
+//Fechas del header
 const numberDate = document.getElementById("numberDate");
 const monthDate = document.getElementById("monthDate");
 const yearDate = document.getElementById("yearDate");
-const weekDate = document.getElementById("weekDate");
-
-const currentDate = document.getElementById("currentDate");
+const textDate = document.getElementById("textDate");
 
 const setDate = () => {
   const date = new Date();
   numberDate.textContent = date.toLocaleString("es", { day: "numeric" });
   yearDate.textContent = date.toLocaleString("es", { year: "numeric" });
   monthDate.textContent = date.toLocaleString("es", { month: "short" });
-  weekDate.textContent = date.toLocaleString("es", { weekday: "long" });
+  textDate.textContent = date.toLocaleString("es", { weekday: "long" });
 };
 setDate();
 
