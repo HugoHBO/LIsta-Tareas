@@ -25,15 +25,25 @@ taskList.addEventListener("click", (e) => {
   if (e.target.type === "checkbox") {
     e.target.nextElementSibling.classList.toggle("done");
   }
-  const target = e.target.nextElementSibling.textContent;
-  const jeje = getTasksFromLocalStorage();
-  const localStorageActual = jeje.map((tasks) => {
-    //console.log(tasks.done);
-    if (target === tasks.content) {
-      tasks.done = true;
+  const pText = e.target.nextElementSibling.textContent; // texto
+  const tasksFromLocal = getTasksFromLocalStorage(); // TasksLocalStorage
+  const pClassValue = e.target.nextElementSibling.classList.value; // valor de class
+  // cambio los valores del localStorage y los guerdo de nuevo.
+  const localStorageActual = tasksFromLocal.map((tasks) => {
+    if (pClassValue === "done") {
+      if (pText === tasks.content) {
+        tasks.done = true;
+        tasks.checked = true;
+      }
+    } else {
+      if (pText === tasks.content) {
+        tasks.done = false;
+        tasks.checked = false;
+      }
     }
     return tasks;
   });
+  //console.log(localStorageActual);
   localStorage.setItem("tasks", JSON.stringify(localStorageActual));
 });
 
@@ -47,6 +57,7 @@ taskForm.addEventListener("submit", (event) => {
     done: false,
     taskDate: new Date().toLocaleString().split(",")[0],
   };
+
   if (!taskObject.content) return; // no permite tareas sin contenido.
   addToList(taskObject); // llama a la función y crea el nuevo elemento en la ul
   taskForm.reset(); // reset al form
@@ -71,6 +82,12 @@ const addToList = (taskObject) => {
   taskP.textContent = taskObject.content;
   // se crea el checkbox para marcar la tarea
   input.type = "checkbox";
+  console.log(taskObject.done);
+  // si done
+  if (taskObject.done === true) {
+    input.checked = true;
+    taskP.classList.add("done");
+  }
   // se añade la fecha
   taskDateP.textContent = taskObject.taskDate;
   // si urgency es true, se agrega la clase "importante"
