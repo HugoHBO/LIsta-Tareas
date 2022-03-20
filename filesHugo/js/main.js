@@ -30,7 +30,7 @@ taskList.addEventListener("click", (e) => {
   const pClassValue = e.target.nextElementSibling.classList.value; // valor de class
   // cambio los valores del localStorage y los guerdo de nuevo.
   const localStorageActual = tasksFromLocal.map((tasks) => {
-    if (pClassValue === "done") {
+    if (pClassValue === "done" || pClassValue === "important done") {
       if (pText === tasks.content) {
         tasks.done = true;
         tasks.checked = true;
