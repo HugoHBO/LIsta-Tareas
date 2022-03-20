@@ -27,7 +27,7 @@
     <section class="list roundBorder">
       <header>
         <!-- Nombre de la página -->
-        <h1>BLOC DE NOTAS</h1>
+        <h1 id="titulo">BLOC DE NOTAS</h1>
 
         <!-- Fechas del header -->
         <section class="date">
@@ -46,21 +46,21 @@
         <section id="toAddTask">
           <form name="taskForm">
             <p>
+              <!-- Imput -->
               <label for="newTask">
                 <input
                   type="text"
                   name="NewTask"
                   id="newTask"
-                  maxlength="100"
-                  placeholder="Escribe una nueva tarea"
+                  maxlength="150"
+                  placeholder="Nueva tarea"
                   autofocus
                   autocomplete="off"
                   class="roundBorder"
                 />
               </label>
-            </p>
-            <p>
-              <label for="importance">Tipo de tarea: </label>
+              <!-- Selector de importancia -->
+              <label for="importance"></label>
               <select
                 name="relevance"
                 id="importance"
@@ -70,17 +70,16 @@
                 <option value="0">Normal</option>
                 <option value="1">Importante</option>
               </select>
-            </p>
-            <p>
+              <!-- Button AddTask -->
               <button id="submitTask" class="roundBorder">Agregar tarea</button>
             </p>
           </form>
         </section>
 
         <!-- Lista de tareas -->
-        <section id="myTaskList">
+        <section id="taskList">
           <ul id="userList">
-            Mi lista de tareas
+            Lista de tareas
           </ul>
         </section>
       </main>

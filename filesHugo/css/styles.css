@@ -1,4 +1,13 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+
+.important {
+  font-weight: bold;
+}
+
+.done {
+  text-decoration-line: line-through;
 }
