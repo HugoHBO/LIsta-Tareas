@@ -16,12 +16,12 @@ const setDate = () => {
 };
 setDate();
 
-// traemos el Form y la Ul
-
+// Tremos los elementos
 const taskForm = document.querySelector("form");
 const taskList = document.querySelector("ul");
+const removeTasks = document.getElementById("removeTasks");
 
-// evento para el el checkbox
+// evento checkbox
 taskList.addEventListener("click", (e) => {
   if (e.target.id === "doneInput") {
     e.target.nextElementSibling.classList.toggle("done");
@@ -30,37 +30,47 @@ taskList.addEventListener("click", (e) => {
   const pText = e.target.nextElementSibling.textContent; // texto
   const pClassValue = e.target.nextElementSibling.classList.value; // valor de class
   // cambio los valores del localStorage y los guerdo de nuevo.
-  const localStorageActual = tasksFromLocal.map((tasks) => {
+  const localStorageActual = tasksFromLocal.map((task) => {
     if (pClassValue === "done") {
-      if (pText === tasks.content) {
-        tasks.done = true;
-        tasks.checked = true;
+      if (pText === task.content) {
+        task.done = true;
+        //tasks.checked = true;
       }
     } else {
-      if (pText === tasks.content) {
-        tasks.done = false;
-        tasks.checked = false;
+      if (pText === task.content) {
+        task.done = false;
+        //tasks.checked = false;
       }
     }
-    return tasks;
+    return task;
   });
   //console.log(localStorageActual);
   localStorage.setItem("tasks", JSON.stringify(localStorageActual));
 });
 
-// añado el listenear
-taskForm.addEventListener("submit", (event) => {
-  event.preventDefault(); // cancela acción Defaults
+// evento para Button = removeTasks
+removeTasks.addEventListener("click", (e) => {
+  const tasksFromLocalStorage = getTasksFromLocalStorage();
+  const notDoneTasks = tasksFromLocalStorage.filter((task) => {
+    return task.done === false;
+  });
+  localStorage.setItem("tasks", JSON.stringify(notDoneTasks));
+  generateTasksList();
+});
+
+// evento para form
+taskForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // cancela acción Defaults
+  // valores de las tareas
   const taskObject = {
-    // valores de las tareas
-    content: event.target.elements.newTask.value,
-    urgency: +event.target.elements.importance.value,
+    content: e.target.elements.newTask.value,
+    urgency: +e.target.elements.importance.value,
     done: false,
     taskDate: new Date().toLocaleString().split(",")[0],
   };
 
   if (!taskObject.content) return; // no permite tareas sin contenido.
-  addToList(taskObject); // llama a la función y crea el nuevo elemento en la ul
+  addToList(taskObject); // llama a la función y crea los elementos en ul
   taskForm.reset(); // reset al form
   // actualizamos el localStorage
   const tasksFromLocalStorage = getTasksFromLocalStorage();
@@ -70,7 +80,7 @@ taskForm.addEventListener("submit", (event) => {
   );
 });
 
-// Creador de nuevas tareas
+// Creador de nuevas tasks
 const addToList = (taskObject) => {
   if (!taskObject.content) return; // no permite tareas sin contenido.
   // elementos de la nueva tarea
@@ -82,41 +92,37 @@ const addToList = (taskObject) => {
   const taskDateP = document.createElement("p");
   // valor del imput
   taskP.textContent = taskObject.content;
+  // fecha
+  taskDateP.textContent = taskObject.taskDate;
+  // li classList
+  li.classList.add("roundBorder", "li");
   // se crea el checkbox para marcar la tarea
   input.type = "checkbox";
   input.id = "doneInput";
-  // se crea el checkbox para borrar la tarea
-  taskDelete.type = "checkbox";
-  taskDelete.id = "deleteInput";
-  //console.log(taskObject.done);
   // si se cumple, deja marcado el checket y agrega la clase "done"
-  console.log(taskObject);
   if (taskObject.done === true) {
     input.checked = true;
     taskP.classList.add("done");
-    if (taskObject.delete === true) {
-      article.append(taskDelete);
-    }
   }
-  // se añade la fecha
-  taskDateP.textContent = taskObject.taskDate;
   // si urgency es true, se agrega la clase "importante"
   if (taskObject.urgency) {
-    li.classList.add("important");
+    article.classList.add("important");
   }
   // se ordena todo
   taskList.append(li);
   li.append(article);
   article.append(input, taskP, taskDateP);
-}; // final de creador de nuevas tareas
+};
 
+// tareas del localStorage
 const getTasksFromLocalStorage = () => {
   const tasksFromLocalStorage = JSON.parse(localStorage.getItem("tasks")) || [];
   return tasksFromLocalStorage;
 };
-//console.log(getTasksFromLocalStorage());
 
+// Itera las tareas del LocalStorage y las manda con parametro a addToList
 const generateTasksList = () => {
+  taskList.innerHTML = ""; // vacia la lista
   const tasksFromLocalStorage = getTasksFromLocalStorage();
   for (const taskObject of tasksFromLocalStorage) {
     addToList(taskObject);

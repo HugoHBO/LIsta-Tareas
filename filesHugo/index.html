@@ -24,10 +24,10 @@
 
   <body>
     <!-- Covertura de la página -->
-    <section class="list roundBorder">
+    <section class="page roundBorder">
       <header>
         <!-- Nombre de la página -->
-        <h1 id="titulo">BLOC DE NOTAS</h1>
+        <h1>BLOC DE NOTAS</h1>
 
         <!-- Fechas del header -->
         <section class="date">
@@ -71,18 +71,20 @@
                 <option value="1">Importante</option>
               </select>
               <!-- Button AddTask -->
-              <button id="submitTask" class="roundBorder">Agregar tarea</button>
+              <button id="submitTask" class="add roundBorder">Añadir</button>
             </p>
           </form>
         </section>
 
         <!-- Lista de tareas -->
         <section id="taskList">
-          <ul id="userList">
-            Lista de tareas
-          </ul>
+          <h2>Lista de tareas</h2>
+          <button id="removeTasks" class="remove roundBorder">Limpiar</button>
+
+          <ul id="userList" style="list-style: none"></ul>
         </section>
       </main>
+      <footer></footer>
     </section>
   </body>
 </html>

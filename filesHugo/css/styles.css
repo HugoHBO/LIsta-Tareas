@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  height: 100vh;
+}
+
+.roundBorder {
+  border-radius: 5px;
+}
+
 .important {
   font-weight: bold;
 }
@@ -11,3 +21,44 @@
 .done {
   text-decoration-line: line-through;
 }
+
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dateLeft {
+  display: flex;
+  align-items: center;
+}
+
+#numberDate {
+  font-size: 50px;
+}
+
+#textDate {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+#monthDate,
+#numberDate,
+#textDate {
+  font-weight: bold;
+}
+
+#monthDate,
+#yearDate {
+  margin-left: 7px;
+  font-size: 20px;
+}
+
+/* .page {
+  margin: 25px auto;
+  padding: 25px;
+  background-color: lemonchiffon;
+  width: 100%;
+  min-width: 350px;
+  max-width: 50%;
+} */
