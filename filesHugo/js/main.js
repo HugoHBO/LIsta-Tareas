@@ -17,20 +17,21 @@ const setDate = () => {
 setDate();
 
 // traemos el Form y la Ul
+
 const taskForm = document.querySelector("form");
 const taskList = document.querySelector("ul");
 
 // evento para el el checkbox
 taskList.addEventListener("click", (e) => {
-  if (e.target.type === "checkbox") {
+  if (e.target.id === "doneInput") {
     e.target.nextElementSibling.classList.toggle("done");
   }
-  const pText = e.target.nextElementSibling.textContent; // texto
   const tasksFromLocal = getTasksFromLocalStorage(); // TasksLocalStorage
+  const pText = e.target.nextElementSibling.textContent; // texto
   const pClassValue = e.target.nextElementSibling.classList.value; // valor de class
   // cambio los valores del localStorage y los guerdo de nuevo.
   const localStorageActual = tasksFromLocal.map((tasks) => {
-    if (pClassValue === "done" || pClassValue === "important done") {
+    if (pClassValue === "done") {
       if (pText === tasks.content) {
         tasks.done = true;
         tasks.checked = true;
@@ -76,23 +77,32 @@ const addToList = (taskObject) => {
   const li = document.createElement("li");
   const article = document.createElement("article");
   const input = document.createElement("input");
+  const taskDelete = document.createElement("input");
   const taskP = document.createElement("p");
   const taskDateP = document.createElement("p");
   // valor del imput
   taskP.textContent = taskObject.content;
   // se crea el checkbox para marcar la tarea
   input.type = "checkbox";
-  console.log(taskObject.done);
-  // si done
+  input.id = "doneInput";
+  // se crea el checkbox para borrar la tarea
+  taskDelete.type = "checkbox";
+  taskDelete.id = "deleteInput";
+  //console.log(taskObject.done);
+  // si se cumple, deja marcado el checket y agrega la clase "done"
+  console.log(taskObject);
   if (taskObject.done === true) {
     input.checked = true;
     taskP.classList.add("done");
+    if (taskObject.delete === true) {
+      article.append(taskDelete);
+    }
   }
   // se añade la fecha
   taskDateP.textContent = taskObject.taskDate;
   // si urgency es true, se agrega la clase "importante"
   if (taskObject.urgency) {
-    taskP.classList.add("important");
+    li.classList.add("important");
   }
   // se ordena todo
   taskList.append(li);
