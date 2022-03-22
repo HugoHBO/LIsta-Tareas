@@ -56,7 +56,7 @@
                   placeholder="Nueva tarea"
                   autofocus
                   autocomplete="off"
-                  class="roundBorder"
+                  class="padding roundBorder"
                 />
               </label>
               <!-- Selector de importancia -->
@@ -64,22 +64,26 @@
               <select
                 name="relevance"
                 id="importance"
-                class="roundBorder"
+                class="padding roundBorder"
                 required
               >
                 <option value="0">Normal</option>
                 <option value="1">Importante</option>
               </select>
               <!-- Button AddTask -->
-              <button id="submitTask" class="add roundBorder">Añadir</button>
+              <button id="submitTask" class="padding add">+</button>
             </p>
           </form>
         </section>
 
         <!-- Lista de tareas -->
         <section id="taskList">
-          <h2>Lista de tareas</h2>
-          <button id="removeTasks" class="remove roundBorder">Limpiar</button>
+          <section class="h2yRemove">
+            <h2>Listas de tareas</h2>
+            <button id="removeTasks" class="padding remove roundBorder">
+              Limpiar
+            </button>
+          </section>
 
           <ul id="userList" style="list-style: none"></ul>
         </section>

@@ -8,18 +8,15 @@ body {
   font-family: "Lato", sans-serif;
   margin: 0;
   height: 100vh;
+  background-color: rgb(236, 236, 236);
 }
 
-.roundBorder {
-  border-radius: 5px;
+header {
+  margin-bottom: 15px;
 }
 
-.important {
-  font-weight: bold;
-}
-
-.done {
-  text-decoration-line: line-through;
+#toAddTask {
+  margin-bottom: 10px;
 }
 
 .date {
@@ -28,7 +25,7 @@ body {
   justify-content: space-between;
 }
 
-.dateLeft {
+.leftDate {
   display: flex;
   align-items: center;
 }
@@ -47,18 +44,66 @@ body {
 #textDate {
   font-weight: bold;
 }
-
+#monthDate::first-letter {
+  text-transform: capitalize;
+}
 #monthDate,
 #yearDate {
   margin-left: 7px;
   font-size: 20px;
 }
 
-/* .page {
+.padding {
+  font-size: 18px;
+  padding: 4px;
+  background-color: rgb(243, 240, 240);
+}
+.roundBorder {
+  border-radius: 10px;
+  border: navajowhite;
+}
+
+#newTask::placeholder {
+  padding-left: 3px;
+}
+
+.add {
+  cursor: pointer;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+input:focus {
+  outline: none;
+}
+
+.li {
+  background-color: white;
+  margin-top: 15px;
+  color: gray;
+  cursor: pointer;
+}
+
+.h2yRemove {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.page {
   margin: 25px auto;
   padding: 25px;
   background-color: lemonchiffon;
   width: 100%;
   min-width: 350px;
-  max-width: 50%;
-} */
+  max-width: 35%;
+}
+
+.important {
+  font-weight: bold;
+}
+
+.done {
+  text-decoration: line-through;
+}
