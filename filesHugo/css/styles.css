@@ -15,8 +15,12 @@ header {
   margin-bottom: 15px;
 }
 
+h1 {
+  margin-bottom: 5px;
+}
+
 #toAddTask {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .date {
@@ -54,9 +58,11 @@ header {
 }
 
 .padding {
-  font-size: 18px;
-  padding: 4px;
+  font-size: 16px;
+  padding: 5px;
   background-color: rgb(243, 240, 240);
+  outline: none;
+  color: gray;
 }
 .roundBorder {
   border-radius: 10px;
@@ -67,30 +73,103 @@ header {
   padding-left: 3px;
 }
 
+#newTask {
+  background-color: white;
+}
+
 .add {
+  font-size: 20px;
   cursor: pointer;
   border: none;
-  width: 30px;
-  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
   border-radius: 50%;
+  color: gray;
+}
+
+.add:hover {
+  font-weight: bold;
+  color: white;
+  background-color: rgba(157, 233, 157, 0.657);
+}
+
+h2 {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: larger;
 }
 
 input:focus {
   outline: none;
 }
 
+#toAddTask {
+  margin-bottom: 15px;
+}
+
+.remove:hover {
+  cursor: pointer;
+  background-color: rgba(231, 67, 67, 0.794);
+  color: white;
+  font-weight: bold;
+}
+
 .li {
   background-color: white;
-  margin-top: 15px;
   color: gray;
+}
+
+article {
+  padding: 15px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.articleAside {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+#newTask {
+  width: 45%;
+  margin-right: 10px;
+}
+
+#importance {
   cursor: pointer;
+  margin-right: 10px;
+}
+
+#taskP {
+  padding-right: 0;
+  margin-right: 10px;
+  max-width: 45vh;
+  max-height: 10vh;
+  overflow: scroll;
+  cursor: pointer;
+}
+
+#doneInput:hover {
+  cursor: pointer;
+}
+
+.articleAside :nth-child(2) {
+  font-size: 16px;
+  margin-right: 10px;
+  letter-spacing: 0.5px;
 }
 
 .h2yRemove {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 15px;
 }
+
 .page {
   margin: 25px auto;
   padding: 25px;
@@ -101,7 +180,7 @@ input:focus {
 }
 
 .important {
-  font-weight: bold;
+  background-color: rgba(146, 236, 146, 0.664);
 }
 
 .done {

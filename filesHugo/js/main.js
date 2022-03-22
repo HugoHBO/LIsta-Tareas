@@ -24,11 +24,11 @@ const removeTasks = document.getElementById("removeTasks");
 // evento checkbox
 taskList.addEventListener("click", (e) => {
   if (e.target.id === "doneInput") {
-    e.target.nextElementSibling.classList.toggle("done");
+    e.target.parentElement.nextElementSibling.classList.toggle("done");
   }
   const tasksFromLocal = getTasksFromLocalStorage(); // TasksLocalStorage
-  const pText = e.target.nextElementSibling.textContent; // texto
-  const pClassValue = e.target.nextElementSibling.classList.value; // valor de class
+  const pText = e.target.parentElement.nextElementSibling.textContent; // texto
+  const pClassValue = e.target.parentElement.nextElementSibling.classList.value; // valor de class
   // cambio los valores del localStorage y los guerdo de nuevo.
   const localStorageActual = tasksFromLocal.map((task) => {
     if (pClassValue === "done") {
@@ -87,9 +87,13 @@ const addToList = (taskObject) => {
   const li = document.createElement("li");
   const article = document.createElement("article");
   const input = document.createElement("input");
-  const taskDelete = document.createElement("input");
+  const aside = document.createElement("aside");
   const taskP = document.createElement("p");
   const taskDateP = document.createElement("p");
+  // clase del aside
+  aside.classList.add("articleAside");
+  // id taskP
+  taskP.id = "taskP";
   // valor del imput
   taskP.textContent = taskObject.content;
   // fecha
@@ -111,7 +115,8 @@ const addToList = (taskObject) => {
   // se ordena todo
   taskList.append(li);
   li.append(article);
-  article.append(input, taskP, taskDateP);
+  article.append(aside, taskP);
+  aside.append(input, taskDateP);
 };
 
 // tareas del localStorage
