@@ -118,6 +118,7 @@ input:focus {
 .li {
   background-color: white;
   color: gray;
+  margin-bottom: 10px;
 }
 
 article {
@@ -148,9 +149,13 @@ article {
   padding-right: 0;
   margin-right: 10px;
   max-width: 45vh;
-  max-height: 10vh;
-  overflow: scroll;
+  max-height: 6.6vh;
+  overflow: auto;
   cursor: pointer;
+}
+
+#taskP::-webkit-scrollbar {
+  display: none; /* Ocultar scroll */
 }
 
 #doneInput:hover {
@@ -173,13 +178,14 @@ article {
 .page {
   margin: 25px auto;
   padding: 25px;
-  background-color: lemonchiffon;
+  background-color: rgba(247, 236, 141, 0.829);
   width: 100%;
   min-width: 350px;
   max-width: 35%;
 }
 
 .important {
+  border-radius: 10px;
   background-color: rgba(146, 236, 146, 0.664);
 }
 
